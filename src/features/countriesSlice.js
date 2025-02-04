@@ -1,21 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-// Async thunk to fetch countries
 export const fetchCountries = createAsyncThunk(
-  'countries/fetchCountries', // Action type prefix
+  'countries/fetchCountries',
   async () => {
     const response = await axios.get('https://restcountries.com/v3.1/all');
     return response.data;
   }
 );
 
-// Slice for countries
 const countriesSlice = createSlice({
   name: 'countries',
   initialState: {
     countries: [],
-    loading: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
+    loading: 'idle',
     error: null,
   },
   reducers: {},
